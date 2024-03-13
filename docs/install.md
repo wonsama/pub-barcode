@@ -14,3 +14,5 @@ npm install tailwindcss postcss autoprefixer postcss-cli body-parser cookie-pars
 ## 참조링크
 
 - [JsBarcode](https://github.com/lindell/JsBarcode)
+- [barcode-scanner](https://georapbox.github.io/barcode-scanner/)
+- [Barcode_Detection_API](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API)
