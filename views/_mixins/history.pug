@@ -1,0 +1,30 @@
+//- history.pug
+mixin history(p, username)
+  table.table.table-hover
+    caption.text-lime #{t("table.caption.history")}
+    thead
+      tr
+        th(scope="col") #
+        th(scope="col") #{t("table.header.day")}
+        th(scope="col") #{t("table.header.time_join")}
+        th(scope="col") #{t("table.header.boost")}
+        th(scope="col") #{t("table.header.moved")}
+        th(scope="col") #{t("table.header.runner")}
+    tbody
+      each item, no in p
+        if username == item.username
+          tr.text-white
+            +_history(no, item)
+        else 
+          tr
+            +_history(no, item)
+
+mixin _history(no, item)
+  td #{no+1} 
+  td #{item.day}
+  td #{item.time}
+  td #{item.boost}
+  td #{item.dice}m
+  td
+    img.circle(src=`https://steemitimages.com/u/${item.username}/avatar` alt=`${item.username}`)
+    | &nbsp; #{item.username}

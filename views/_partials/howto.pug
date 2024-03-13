@@ -1,0 +1,27 @@
+.text-white
+  p #{t("howto.game.title")}
+  ul
+    li #{t("howto.game.items.0")} &nbsp;
+      a(href="https://chrome.google.com/webstore/detail/steemkeychain/jhgnbkkipaallpehbohjmkbjofjdmeid?utm_source=chrome-ntp-icon" target="_blank") (#{t("howto.game.items.1")})
+    each idx in [2,3,4]
+      li #{t("howto.game.items."+idx)}
+
+  p #{t("howto.account.title")}
+    ul
+      li
+        a(href="https://free-account.wonsama.dev" target="_blank") #{t("howto.account.items.0")}
+
+  p #{t("howto.features.title")}
+    ul
+      each idx in [0,1,2,3,4]
+        li #{t("howto.features.items."+idx)}
+
+  p #{t("howto.reward.title")}
+    ul
+      each idx in [0,1,2]
+        li #{t("howto.reward.items."+idx)}
+     
+  p #{t("howto.etc.title")}
+    ul
+      each idx in [0,1]
+        li #{t("howto.etc.items."+idx)}

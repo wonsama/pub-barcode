@@ -1,0 +1,30 @@
+//- voting.pug
+mixin voting(p, username)
+  table.table.table-hover
+    caption.text-lime #{t("table.caption.voting")}
+    thead
+      tr
+        th(scope="col") #
+        th(scope="col") #{t("table.header.time_voting")}
+        th(scope="col") #{t("table.header.runner")}
+        th(scope="col") #{t("table.header.title")}
+        th(scope="col") #{t("table.header.move")}
+    tbody
+      each item, no in p
+        if username == item.username
+          tr.text-white
+            +_voting(no, item)
+        else 
+          tr
+            +_voting(no, item)
+
+mixin _voting(no, item)
+  td #{no+1}
+  td #{item.time}
+  td
+    img.circle(src=`https://steemitimages.com/u/${item.username}/avatar` alt=`${item.username}`)
+    | &nbsp; #{item.username}
+  td
+    .d-inline-block.text-truncate(style="max-width: 200px;") #{item.title}
+  td
+    button.btn.btn-dark.btn-sm(type="button") #{t("table.button.move")}

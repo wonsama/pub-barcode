@@ -1,0 +1,74 @@
+//- - var logined = username?true:false;
+//- - var msg = #{t("header.round")}
+doctype html
+include ./_partials/banner.pug
+include ./_mixins/player.pug
+include ./_mixins/login.pug
+include ./_mixins/logout.pug
+include ./_mixins/tab_button.pug
+include ./_mixins/tab_content.pug
+include ./_mixins/join.pug
+include ./_mixins/history.pug
+include ./_mixins/voting.pug
+include ./_mixins/rank.pug
+
+html(lang='en')
+  head
+    //- header css
+    include ./_partials/head.pug
+    block canonical
+    block styles
+  body
+    
+    //- player area
+    .runners-area.overflow-hidden
+      .surface
+      //- shooting star
+      section
+        each val in [1,2,3,4,5,6,7,8,9,10]
+          span
+      img.runners-logo
+      .players
+        +player(75, "1st", "donekim")
+        +player(50, "2nd", "glory7")
+        +player(25, "3rd", "steemit")
+        if username
+          +player_me("12st", username)
+      
+      //- content area
+      .container
+                
+        //- content gap
+        .spacing-h-10vw
+        
+        //- logout
+        if !username
+          +login(round, reward)
+        else
+          +logout(round, reward, username, steem)
+        
+        //- tab
+        .d-flex.align-items-start.mt-3
+          .nav.flex-column.nav-pills.me-3(id="v-pills-tab" role="tablist" aria-orientation="vertical")
+            if username 
+              +tab_button("join", true)
+            +tab_button("history", username?false:true)
+            +tab_button("voting")
+            +tab_button("rank")
+            +tab_button("howto")
+          .tab-content(id="v-pills-tabContent")
+            if username
+              +tab_content("join", true)
+                +join(join)
+            +tab_content("history", username?false:true)
+              +history(history, username)
+            +tab_content("voting")
+              +voting(voting, username)
+            +tab_content("rank")
+              +rank(rank, username)
+            +tab_content("howto")
+              include ./_partials/howto.pug
+    scripts
+      script.
+        var username = '#{username}';
+      include ./_partials/scripts.pug

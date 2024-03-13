@@ -1,0 +1,8 @@
+//- tab_content.pug
+mixin tab_content(id, active=false)
+  if active
+    .tab-pane.fade.show.active.scroll-300.bd-highlight(id=`v-pills-${id}` role="tabpanel" aria-labelledby=`v-pills-${id}-tab`)
+      block
+  else
+    .tab-pane.fade.scroll-300.bd-highlight(id=`v-pills-${id}` role="tabpanel" aria-labelledby=`v-pills-${id}-tab`)
+      block

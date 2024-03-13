@@ -1,0 +1,36 @@
+//- join.pug
+mixin join(p)
+  table.table.table-hover
+    caption.text-lime @#{p.username} 님의 참여정보 : 총 이동거리 #{p.moved}m / #{p.end}m
+    thead
+      tr
+        th(scope="col") #
+        th(scope="col") 일자
+        th(scope="col") 참여시간
+        th(scope="col") 부스트
+        th(scope="col") 이동거리
+        th(scope="col") 참여하기
+    tbody
+      each item, no in p.joined
+        if item.valid
+          tr
+            +_join(no, item, p)
+        else
+          tr.text-siver-a50
+            +_join(no, item, p)
+
+mixin _join(no, item, p)
+  td #{no+1}
+  td #{item.day}
+  td #{item.time}
+  td #{item.boost}
+  td #{item.dice}m
+  if item.boost == 0
+    if item.day == p.day
+      td
+        button.btn.btn-dark.btn-sm(type="button") #{item.fee} STEEM
+    else
+      td
+        button.btn.btn-light.btn-sm(type="button") #{item.fee} STEEM
+  else
+    td

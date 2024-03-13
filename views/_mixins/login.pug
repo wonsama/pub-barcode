@@ -1,0 +1,23 @@
+//- login.pug
+mixin login(round, reward, currency="STEEM")
+  .d-inline-flex.text-white 
+    .p-2 💰 #{t("header.round",{round})} : #{reward} #{currency}
+  .d-inline-flex.text-white
+    .p-2
+      .input-group
+        .input-group-text @
+        input(id="inp-login" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1")
+        .btn.btn-primary(type="button" id="btn-login") #{t("header.login")}
+  +_language()
+  form(id="frm-login" method="post" action="/login")
+    input(type="hidden", id="frm-username" name="username")
+
+mixin _language()
+  .d-inline-flex.text-white
+    .btn-group
+      button.btn.btn-primary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") #{t("header.language")}
+      ul.dropdown-menu(style="background-color:black")
+        li
+          a.dropdown-item(href="/?lng=ko") 한국어
+        li
+          a.dropdown-item(href="/?lng=en") English

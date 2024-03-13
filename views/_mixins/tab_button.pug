@@ -1,0 +1,6 @@
+//- tab_button.pug
+mixin tab_button(id, active=false)
+  if active
+    button.btn.btn-outline-primary.active.mt-1(id=`v-pills-${id}-tab` data-bs-toggle="pill" data-bs-target=`#v-pills-${id}` type="button" role="tab" aria-controls=`v-pills-${id}` aria-selected="true") #{t("menus."+id)}
+  else
+    button.btn.btn-outline-primary.mt-1(id=`v-pills-${id}-tab` data-bs-toggle="pill" data-bs-target=`#v-pills-${id}` type="button" role="tab" aria-controls=`v-pills-${id}` aria-selected="true") #{t("menus."+id)}

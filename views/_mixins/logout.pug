@@ -1,0 +1,11 @@
+//- logout.pug
+mixin logout(round, reward, runner, balance, currency="STEEM")
+  .d-inline-flex.text-white 
+    .p-2 💰 #{t("header.round",{round})} : #{reward} #{currency}
+  .d-inline-flex.text-white 
+    .p-2 @#{runner}
+    .p-2 #{balance} #{currency}
+    .btn.btn-primary(type="button" id="btn-logout") #{t("header.logout")}
+    .p-2 &nbsp;
+  +_language()
+  form(id="frm-logout" method="post" action="/logout")

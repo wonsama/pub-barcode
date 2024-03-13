@@ -1,0 +1,16 @@
+//- player.pug
+mixin player(position, rank, name)
+  .player(id=`p_${name}` style=`left: ${position}vw`)
+    .runner-rank #{rank}
+    .runner-name #{name}
+    img(class="runners-circle" src=`https://steemitimages.com/u/${name}/avatar` alt="car")
+    .leg
+    .leg
+
+mixin player_me(rank, name)
+  .player(id=`me_${name}` style=`left: 0px`)
+    .runner-rank #{rank}
+    .runner-name #{name}
+    img(class="runners-circle" src=`https://steemitimages.com/u/${name}/avatar` alt="car")
+    .leg
+    .leg
