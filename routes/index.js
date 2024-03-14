@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { wrapAsync } = require('../utils/wrap');
 
-router.get('/', function (req, res, next) {
-  res.render('index', {});
+router.get('/code', function (req, res, next) {
+  res.render('code', {});
 });
 
 module.exports = router;
